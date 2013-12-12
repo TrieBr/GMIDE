@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/main">
+        <file>icons/block.png</file>
+        <file>icons/flower.png</file>
+        <file>icons/speaker-volume-none.png</file>
+        <file>icons/picture.png</file>
+        <file>icons/arrow-turn-090-left.png</file>
+        <file>icons/document--plus.png</file>
+        <file>icons/color.png</file>
+        <file>icons/ui-label.png</file>
+        <file>icons/alarm-clock--plus.png</file>
+        <file>icons/projection-screen--plus.png</file>
+        <file>icons/folder-horizontal-open.png</file>
+        <file>icons/disk.png</file>
+        <file>icons/document-binary.png</file>
+        <file>icons/gear.png</file>
+        <file>icons/bug.png</file>
+        <file>icons/control.png</file>
+    </qresource>
+</RCC>
