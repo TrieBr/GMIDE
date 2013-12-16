@@ -1,6 +1,7 @@
 #include "MainWindow.h"
 #include <QApplication>
 #include <QStyleFactory>
+#include "Workspace.h"
 
 int main(int argc, char *argv[])
 {
@@ -22,6 +23,11 @@ int main(int argc, char *argv[])
     palette.setColor(QPalette::Highlight, QColor(45, 130, 195).lighter());
     palette.setColor(QPalette::HighlightedText, Qt::black);
     qApp->setPalette(palette);
+
+    QSharedPointer<GMProject> project (new GMProject());
+    project->Load("D:/Dropbox/Mobile Games/Blueprint.gmx/Blueprint.project.gmx");
+    Workspace::SetSingleton(new Workspace());
+    Workspace::GetSingleton()->SetCurrentProject(project);
 
     MainWindow w;
     w.show();

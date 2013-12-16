@@ -35,6 +35,12 @@
     </property>
     <item row="0" column="0">
      <widget class="QFrame" name="frame">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>1</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
       <property name="frameShape">
        <enum>QFrame::NoFrame</enum>
       </property>
@@ -54,44 +60,6 @@
        <property name="bottomMargin">
         <number>0</number>
        </property>
-       <item row="0" column="0">
-        <widget class="QFrame" name="frame_3">
-         <property name="frameShape">
-          <enum>QFrame::NoFrame</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <layout class="QGridLayout" name="gridLayout_3">
-          <property name="leftMargin">
-           <number>0</number>
-          </property>
-          <property name="topMargin">
-           <number>2</number>
-          </property>
-          <property name="rightMargin">
-           <number>0</number>
-          </property>
-          <property name="bottomMargin">
-           <number>0</number>
-          </property>
-          <item row="0" column="0">
-           <widget class="QTabWidget" name="tabWidget">
-            <widget class="QWidget" name="tab">
-             <attribute name="title">
-              <string>Tab 1</string>
-             </attribute>
-            </widget>
-            <widget class="QWidget" name="tab_2">
-             <attribute name="title">
-              <string>Tab 2</string>
-             </attribute>
-            </widget>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
       </layout>
      </widget>
     </item>
@@ -194,70 +162,39 @@
          <number>1</number>
         </property>
         <item row="0" column="0">
-         <widget class="QTreeWidget" name="treeWidget">
+         <widget class="QTreeView" name="treeView">
+          <property name="styleSheet">
+           <string notr="true">QTreeView::branch:has-children:!has-siblings:closed,
+ QTreeView::branch:closed:has-children:has-siblings {
+         border-image: none;
+		image: url(:/main/icons/blue-folder-horizontal.png);
+ }
+
+QTreeView::branch:open:has-children:!has-siblings,
+ QTreeView::branch:open:has-children:has-siblings  {
+         border-image: none;
+		 image: url(:/main/icons/blue-folder-horizontal-open.png);
+ }
+QTreeView::branch:has-siblings:!adjoins-item {
+     border-image: url(:/main/icons/stylesheet-vline.png) 0;
+ }
+QTreeView::branch:has-siblings:adjoins-item {
+     border-image: url(:/main/icons/stylesheet-branch-more.png) 0;
+ }
+ QTreeView::branch:!has-children:!has-siblings:adjoins-item {
+     border-image: url(:/main/icons/stylesheet-branch-end.png) 0;
+ }
+</string>
+          </property>
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+          <property name="dragDropMode">
+           <enum>QAbstractItemView::InternalMove</enum>
+          </property>
           <attribute name="headerVisible">
            <bool>false</bool>
           </attribute>
-          <column>
-           <property name="text">
-            <string>1</string>
-           </property>
-          </column>
-          <item>
-           <property name="text">
-            <string>Sprites</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Sounds</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Backgrounds</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Paths</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Scripts</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Shaders</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Fonts</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Time Lines</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Objects</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Rooms</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Included Files</string>
-           </property>
-          </item>
          </widget>
         </item>
        </layout>
@@ -292,15 +229,141 @@
      </property>
      <item row="0" column="0">
       <widget class="QTabWidget" name="tabWidget_2">
+       <property name="currentIndex">
+        <number>3</number>
+       </property>
        <widget class="QWidget" name="tab_3">
         <attribute name="title">
-         <string>Tab 1</string>
+         <string>Build Output</string>
         </attribute>
+        <layout class="QGridLayout" name="gridLayout_7">
+         <property name="leftMargin">
+          <number>1</number>
+         </property>
+         <property name="topMargin">
+          <number>1</number>
+         </property>
+         <property name="rightMargin">
+          <number>1</number>
+         </property>
+         <property name="bottomMargin">
+          <number>1</number>
+         </property>
+         <item row="0" column="0">
+          <widget class="QPlainTextEdit" name="plainTextEdit_build_output">
+           <property name="plainText">
+            <string>ergerger</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
        <widget class="QWidget" name="tab_4">
         <attribute name="title">
-         <string>Tab 2</string>
+         <string>Application Output</string>
         </attribute>
+        <layout class="QGridLayout" name="gridLayout_8">
+         <property name="leftMargin">
+          <number>1</number>
+         </property>
+         <property name="topMargin">
+          <number>1</number>
+         </property>
+         <property name="rightMargin">
+          <number>1</number>
+         </property>
+         <property name="bottomMargin">
+          <number>1</number>
+         </property>
+         <item row="0" column="0">
+          <widget class="QPlainTextEdit" name="plainTextEdit_app_output">
+           <property name="plainText">
+            <string>ergerger</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="tab_5">
+        <attribute name="title">
+         <string>Issues</string>
+        </attribute>
+        <layout class="QGridLayout" name="gridLayout_9">
+         <property name="leftMargin">
+          <number>1</number>
+         </property>
+         <property name="topMargin">
+          <number>1</number>
+         </property>
+         <property name="rightMargin">
+          <number>1</number>
+         </property>
+         <property name="bottomMargin">
+          <number>1</number>
+         </property>
+         <item row="0" column="0">
+          <widget class="QPlainTextEdit" name="plainTextEdit_issues">
+           <property name="plainText">
+            <string>ergerger</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="tab_6">
+        <attribute name="title">
+         <string>IDE Log</string>
+        </attribute>
+        <layout class="QGridLayout" name="gridLayout_10">
+         <property name="leftMargin">
+          <number>1</number>
+         </property>
+         <property name="topMargin">
+          <number>1</number>
+         </property>
+         <property name="rightMargin">
+          <number>1</number>
+         </property>
+         <property name="bottomMargin">
+          <number>1</number>
+         </property>
+         <item row="0" column="0">
+          <widget class="QPlainTextEdit" name="plainTextEdit_ide_log">
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="plainText">
+            <string>Loaded Project Successfully!</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="tab_7">
+        <attribute name="title">
+         <string>Version Control</string>
+        </attribute>
+        <layout class="QGridLayout" name="gridLayout_11">
+         <property name="leftMargin">
+          <number>1</number>
+         </property>
+         <property name="topMargin">
+          <number>1</number>
+         </property>
+         <property name="rightMargin">
+          <number>1</number>
+         </property>
+         <property name="bottomMargin">
+          <number>1</number>
+         </property>
+         <item row="0" column="0">
+          <widget class="QPlainTextEdit" name="plainTextEdit_version_control_log">
+           <property name="plainText">
+            <string>ergerger</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </widget>
      </item>

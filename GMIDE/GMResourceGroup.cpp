@@ -1,0 +1,2 @@
+#include "GMResourceGroup.h"
+
