@@ -19,7 +19,7 @@ GMProject::GMProject()
 }
 //Load specified project (.project.gmx) file
 bool GMProject::Load(const QString &fileName) {
-    QFile projectFile(fileName);
+    projectFile.setFileName(fileName);
     QDomDocument xmlDoc;
     if (!projectFile.exists())
         return false;       //File does not exist.

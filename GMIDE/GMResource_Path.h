@@ -7,7 +7,7 @@ class GMResource_Path : public GMResource
 {
 public:
     GMResource_Path();
-    virtual bool Load(const QString &fileName);
+    virtual bool Load(const QFileInfo &file);
     virtual QPixmap GetPixmap();
 };
 

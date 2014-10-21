@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui xml
+QT       += core gui xml xmlpatterns
 
 CONFIG += c++11
 
@@ -32,7 +32,8 @@ SOURCES += main.cpp\
     GMResource_IncludedFile.cpp \
     ResourceEditor_Room.cpp \
     WorkspaceEditorTabCluster.cpp \
-    ResourceEditor.cpp
+    ResourceEditor.cpp \
+    ResourceEditor_Sprite.cpp
 
 HEADERS  += MainWindow.h \
     GMResource.h \
@@ -52,10 +53,12 @@ HEADERS  += MainWindow.h \
     GMResource_IncludedFile.h \
     ResourceEditor_Room.h \
     WorkspaceEditorTabCluster.h \
-    ResourceEditor.h
+    ResourceEditor.h \
+    ResourceEditor_Sprite.h
 
 FORMS    += mainwindow.ui \
     resourceeditor_room.ui \
-    workspaceeditortabcluster.ui
+    workspaceeditortabcluster.ui \
+    resourceeditor_sprite.ui
 
 RESOURCES = skin.qrc

@@ -23,8 +23,9 @@ void MainWindow::on_treeView_doubleClicked(const QModelIndex &index)
 {
     if (index.parent().isValid()) {
         QSharedPointer<GMResource> resource;
-
-       resource = index.data(Qt::UserRole).value<QSharedPointer<GMResource> >();
-        Workspace::GetSingleton()->OpenResourceEditor(resource);
+        resource = index.data(Qt::UserRole).value<QSharedPointer<GMResource> >();
+        if (!resource.isNull()) {
+            Workspace::GetSingleton()->OpenResourceEditor(resource);
+        }
     }
 }

@@ -2,10 +2,11 @@
 
 GMResource_Sound::GMResource_Sound()
 {
+    resourceType = GM_RESOURCE_SOUND;
 }
 
-bool GMResource_Sound::Load(const QString &fileName) {
-    this->GMResource::Load(fileName);
+bool GMResource_Sound::Load(const QFileInfo &file) {
+    this->GMResource::Load(file);
     return false;
 }
 QPixmap GMResource_Sound::GetPixmap() {

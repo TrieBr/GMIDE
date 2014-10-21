@@ -26,10 +26,9 @@ public:
     QStandardItemModel* ItemModel();
 
 
-
-
-
 private:
+    //The project file (ie Game.project.gmx)
+    QFile projectFile;
     //Resources
     GMResourceNode<GMResource_Sprite> resourceSprites;
     GMResourceNode<GMResource_Sound> resourceSounds;
@@ -49,15 +48,17 @@ private:
         while (!n.isNull()) {
             QDomElement e = n.toElement();
             if (!e.isNull()) {
-                if (e.tagName().compare(groupRoot->tagName())==0) {
+                if (e.tagName().compare(groupRoot->tagName())==0) { //This is a recursive grouo, so we parse it recursively
                     GMResourceNode<T>* child = group->CreateChild(e.attribute("name","Undefined_Group"));
                     LoadGroupRooms(child,&e);
                 }else{
                     GMResourceNode<T>* child = group->CreateChild("Undefined_Item");
                     QSharedPointer<T> newResource = QSharedPointer<T>(new T());
-                    newResource->Load(e.text());
+                    QFileInfo assetPath = QFileInfo(QFileInfo(projectFile).absolutePath().append("/").append(e.text()).append(".").append(GMResource::GetResourceTypeString(newResource->GetResourceType())).append(".gmx"));
+                    newResource->Load(assetPath);
                     child->SetResource(newResource);
-                    std::cout << qPrintable(newResource->GetRelativeFilename()) << std::endl;
+
+                    std::cout << "Loaded Resource: " << qPrintable(assetPath.canonicalFilePath()) << std::endl;
                 }
             }
             n = n.nextSibling();

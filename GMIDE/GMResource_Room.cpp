@@ -2,10 +2,11 @@
 #include "ResourceEditor_Room.h"
 GMResource_Room::GMResource_Room()
 {
+    resourceType = GM_RESOURCE_ROOM;
 }
 
-bool GMResource_Room::Load(const QString &fileName) {
-    this->GMResource::Load(fileName);
+bool GMResource_Room::Load(const QFileInfo &file) {
+    this->GMResource::Load(file);
     return false;
 }
 QPixmap GMResource_Room::GetPixmap() {

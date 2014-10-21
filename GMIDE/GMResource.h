@@ -4,6 +4,10 @@
 #include <QString>
 #include <QFileInfo>
 #include <QPixmap>
+#include <QSize>
+#include <QXmlQuery>
+#include <QXmlResultItems>
+#include <QDebug>
 #include "ResourceEditor.h"
 
 
@@ -29,17 +33,14 @@ class GMResource
 public:
     GMResource();
     //Load the resource from a file
-    virtual bool Load(const QString &fileName) {
-        QFileInfo f(fileName);
-        relativePath = f.path();
-        SetName(f.baseName());
+    virtual bool Load(const QFileInfo &file) {
+        fileInfo = file;
+        SetName(fileInfo.baseName());
         return true;
     }
 
-    //Get the relative resource path (eg sprites)
-    virtual const QString& GetRelativePath() { return relativePath; }
-    //Get the full relative name (eg sprites/spr_player.sprite.gmx)
-    const QString GetRelativeFilename() { return QString(GetRelativePath()).append("/").append(GetName()).append(".").append(GetResourceTypeString(resourceType)).append(".gmx");}
+    //Get the file info for the file associated with this resource
+    QFileInfo& GetFileInfo() { return fileInfo; }
 
     //Set/Get name of resource
     void SetName(const QString &str);
@@ -53,9 +54,13 @@ public:
     virtual QSharedPointer<ResourceEditor> CreateEditor() { return QSharedPointer<ResourceEditor>(); }
 
 private:
+
     QString name;       //Name of the resource (eg spr_player)
-    QString relativePath;       //(relative) path of the resource (eg sprites);
+    QFileInfo fileInfo;         //File corresponding to the resource (XML File ie sprite_0.sprite.gmx
+
+protected:
     GMResourceType resourceType;    //Type of resource
+
 
 };
 

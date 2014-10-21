@@ -1,4 +1,5 @@
 #include "GMResource.h"
+#include <QXmlQuery>
 
 GMResource::GMResource()
 {
@@ -12,5 +13,4 @@ void GMResource::SetName(const QString &str) {
 QString GMResource::GetName() {
     return name;
 }
-
 

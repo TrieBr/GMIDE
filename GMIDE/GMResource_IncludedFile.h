@@ -7,7 +7,7 @@ class GMResource_IncludedFile : public GMResource
 {
 public:
     GMResource_IncludedFile();
-    virtual bool Load(const QString &fileName);
+    virtual bool Load(const QFileInfo &file);
     virtual QPixmap GetPixmap();
 };
 

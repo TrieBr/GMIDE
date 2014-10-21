@@ -7,7 +7,7 @@ class GMResource_Font : public GMResource
 {
 public:
     GMResource_Font();
-    virtual bool Load(const QString &fileName);
+    virtual bool Load(const QFileInfo &file);
     virtual QPixmap GetPixmap();
 };
 

@@ -7,7 +7,7 @@ class GMResource_Background : public GMResource
 {
 public:
     GMResource_Background();
-    virtual bool Load(const QString &fileName);
+    virtual bool Load(const QFileInfo &file);
     virtual QPixmap GetPixmap();
 };
 

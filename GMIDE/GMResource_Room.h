@@ -6,7 +6,7 @@ class GMResource_Room : public GMResource
 {
 public:
     GMResource_Room();
-    virtual bool Load(const QString &fileName);
+    virtual bool Load(const QFileInfo &file);
     virtual QPixmap GetPixmap();
     virtual QSharedPointer<ResourceEditor> CreateEditor();
 };
