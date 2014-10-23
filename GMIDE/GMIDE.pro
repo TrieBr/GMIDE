@@ -16,49 +16,58 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         MainWindow.cpp \
-    GMResource.cpp \
+    GMAsset.cpp \
     GMProject.cpp \
-    GMResource_Room.cpp \
+    GMAsset_Room.cpp \
     Workspace.cpp \
-    GMResource_Sprite.cpp \
-    GMResource_Sound.cpp \
-    GMResource_Background.cpp \
-    GMResource_Path.cpp \
-    GMResource_Script.cpp \
-    GMResource_Shader.cpp \
-    GMResource_Font.cpp \
-    GMResource_TimeLine.cpp \
-    GMResource_Object.cpp \
-    GMResource_IncludedFile.cpp \
-    ResourceEditor_Room.cpp \
+    GMAsset_Sprite.cpp \
+    GMAsset_Sound.cpp \
+    GMAsset_Background.cpp \
+    GMAsset_Path.cpp \
+    GMAsset_Script.cpp \
+    GMAsset_Shader.cpp \
+    GMAsset_Font.cpp \
+    GMAsset_TimeLine.cpp \
+    GMAsset_Object.cpp \
+    GMAsset_IncludedFile.cpp \
+    AssetEditor_Room.cpp \
     WorkspaceEditorTabCluster.cpp \
-    ResourceEditor.cpp \
-    ResourceEditor_Sprite.cpp
+    AssetEditor.cpp \
+    AssetEditor_Sprite.cpp \
+    QComboBox_NoScroll.cpp \
+    WidgetSpriteFrameView.cpp \
+    WidgetSpriteFrameView_Frame.cpp \
+    AssetEditor_Sound.cpp
 
 HEADERS  += MainWindow.h \
-    GMResource.h \
+    GMAsset.h \
     GMProject.h \
-    GMResource_Room.h \
+    GMAsset_Room.h \
     Workspace.h \
-    GMResource_Sprite.h \
-    GMResourceNode.h \
-    GMResource_Sound.h \
-    GMResource_Background.h \
-    GMResource_Path.h \
-    GMResource_Script.h \
-    GMResource_Shader.h \
-    GMResource_Font.h \
-    GMResource_TimeLine.h \
-    GMResource_Object.h \
-    GMResource_IncludedFile.h \
-    ResourceEditor_Room.h \
+    GMAsset_Sprite.h \
+    GMAssetNode.h \
+    GMAsset_Sound.h \
+    GMAsset_Background.h \
+    GMAsset_Path.h \
+    GMAsset_Script.h \
+    GMAsset_Shader.h \
+    GMAsset_Font.h \
+    GMAsset_TimeLine.h \
+    GMAsset_Object.h \
+    GMAsset_IncludedFile.h \
+    AssetEditor_Room.h \
     WorkspaceEditorTabCluster.h \
-    ResourceEditor.h \
-    ResourceEditor_Sprite.h
+    AssetEditor.h \
+    AssetEditor_Sprite.h \
+    QComboBox_NoScroll.h \
+    WidgetSpriteFrameView.h \
+    WidgetSpriteFrameView_Frame.h \
+    AssetEditor_Sound.h
 
 FORMS    += mainwindow.ui \
-    resourceeditor_room.ui \
+    asseteditor_room.ui \
     workspaceeditortabcluster.ui \
-    resourceeditor_sprite.ui
+    asseteditor_sprite.ui \
+    AssetEditor_Sound.ui
 
 RESOURCES = skin.qrc

@@ -24,6 +24,7 @@ int main(int argc, char *argv[])
     palette.setColor(QPalette::HighlightedText, Qt::black);
     qApp->setPalette(palette);
 
+
     QSharedPointer<GMProject> project (new GMProject());
     project->Load("F:\\Dropbox\\nGod\\Game with Sounds\\nGod.gmx/nGod.project.gmx");
     Workspace::SetSingleton(new Workspace());

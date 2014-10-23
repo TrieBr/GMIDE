@@ -3,62 +3,67 @@
 
 #include <QDomDocument>
 #include <iostream>
-#include "GMResource_Sprite.h"
-#include "GMResource_Sound.h"
-#include "GMResource_Background.h"
-#include "GMResource_Path.h"
-#include "GMResource_Script.h"
-#include "GMResource_Shader.h"
-#include "GMResource_Font.h"
-#include "GMResource_TimeLine.h"
-#include "GMResource_Object.h"
-#include "GMResource_Room.h"
-#include "GMResource_IncludedFile.h"
-#include "GMResourceNode.h"
+#include "GMAsset_Sprite.h"
+#include "GMAsset_Sound.h"
+#include "GMAsset_Background.h"
+#include "GMAsset_Path.h"
+#include "GMAsset_Script.h"
+#include "GMAsset_Shader.h"
+#include "GMAsset_Font.h"
+#include "GMAsset_TimeLine.h"
+#include "GMAsset_Object.h"
+#include "GMAsset_Room.h"
+#include "GMAsset_IncludedFile.h"
+#include "GMAssetNode.h"
+
+/*
+ * Represents a single GameMaker project along with the assets
+ * */
 
 class GMProject
 {
 public:
+    //Constructor
     GMProject();
     //Load the specified project
     virtual bool Load(const QString &fileName);
     //Item model for the resources
     QStandardItemModel* ItemModel();
-
-
 private:
     //The project file (ie Game.project.gmx)
     QFile projectFile;
-    //Resources
-    GMResourceNode<GMResource_Sprite> resourceSprites;
-    GMResourceNode<GMResource_Sound> resourceSounds;
-    GMResourceNode<GMResource_Background> resourceBackgrounds;
-    GMResourceNode<GMResource_Path> resourcePaths;
-    GMResourceNode<GMResource_Script> resourceScripts;
-    GMResourceNode<GMResource_Shader> resourceShaders;
-    GMResourceNode<GMResource_Font> resourceFonts;
-    GMResourceNode<GMResource_TimeLine> resourceTimeLines;
-    GMResourceNode<GMResource_Object> resourceObjects;
-    GMResourceNode<GMResource_Room> resourceRooms;
-    GMResourceNode<GMResource_IncludedFile> resourceIncludedFiles;
+    //Assets
+    GMAssetNode<GMAsset_Sprite> assetSprites;
+    GMAssetNode<GMAsset_Sound> assetSounds;
+    GMAssetNode<GMAsset_Background> assetBackgrounds;
+    GMAssetNode<GMAsset_Path> assetPaths;
+    GMAssetNode<GMAsset_Script> assetScripts;
+    GMAssetNode<GMAsset_Shader> assetShaders;
+    GMAssetNode<GMAsset_Font> assetFonts;
+    GMAssetNode<GMAsset_TimeLine> assetTimeLines;
+    GMAssetNode<GMAsset_Object> assetObjects;
+    GMAssetNode<GMAsset_Room> assetRooms;
+    GMAssetNode<GMAsset_IncludedFile> assetIncludedFiles;
 
+
+    //Processes a Dom tree into the specified AssetNode
     template <class T>
-    bool LoadGroupRooms(GMResourceNode<T>* group, QDomElement *groupRoot) {
+    bool LoadGroupRooms(GMAssetNode<T>* group, QDomElement *groupRoot) {
         QDomNode n = groupRoot->firstChild();
         while (!n.isNull()) {
             QDomElement e = n.toElement();
             if (!e.isNull()) {
                 if (e.tagName().compare(groupRoot->tagName())==0) { //This is a recursive grouo, so we parse it recursively
-                    GMResourceNode<T>* child = group->CreateChild(e.attribute("name","Undefined_Group"));
+                    GMAssetNode<T>* child = group->CreateChild(e.attribute("name","Undefined_Group"));
                     LoadGroupRooms(child,&e);
                 }else{
-                    GMResourceNode<T>* child = group->CreateChild("Undefined_Item");
-                    QSharedPointer<T> newResource = QSharedPointer<T>(new T());
-                    QFileInfo assetPath = QFileInfo(QFileInfo(projectFile).absolutePath().append("/").append(e.text()).append(".").append(GMResource::GetResourceTypeString(newResource->GetResourceType())).append(".gmx"));
-                    newResource->Load(assetPath);
-                    child->SetResource(newResource);
-
-                    std::cout << "Loaded Resource: " << qPrintable(assetPath.canonicalFilePath()) << std::endl;
+                    GMAssetNode<T>* child = group->CreateChild("Undefined_Item"); //Create new GMAssetNode
+                    QSharedPointer<T> newAsset = QSharedPointer<T>(new T()); //Create the new asset
+                    //Generate the full asset filepath and store as QFileInfo
+                    QFileInfo assetPath = QFileInfo(QFileInfo(projectFile).absolutePath().append("/").append(e.text()).append(".").append(GMAsset::GetAssetTypeString(newAsset->GetAssetType())).append(".gmx"));
+                    newAsset->Load(assetPath); //Load the asset
+                    child->SetAsset(newAsset); //Set the GMAssetNode to point to the loaded asset
+                    std::cout << "Loaded Asset: " << qPrintable(assetPath.canonicalFilePath()) << std::endl;
                 }
             }
             n = n.nextSibling();

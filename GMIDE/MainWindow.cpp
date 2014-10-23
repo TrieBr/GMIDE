@@ -22,10 +22,10 @@ MainWindow::~MainWindow()
 void MainWindow::on_treeView_doubleClicked(const QModelIndex &index)
 {
     if (index.parent().isValid()) {
-        QSharedPointer<GMResource> resource;
-        resource = index.data(Qt::UserRole).value<QSharedPointer<GMResource> >();
+        QSharedPointer<GMAsset> resource;
+        resource = index.data(Qt::UserRole).value<QSharedPointer<GMAsset> >();
         if (!resource.isNull()) {
-            Workspace::GetSingleton()->OpenResourceEditor(resource);
+            Workspace::GetSingleton()->OpenAssetEditor(resource);
         }
     }
 }

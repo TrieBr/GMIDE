@@ -41,5 +41,8 @@
         <file>icons/prohibition.png</file>
         <file>icons/tick.png</file>
         <file>icons/ui-panel.png</file>
+        <file>icons/control-pause-small.png</file>
+        <file>icons/control-pause.png</file>
+        <file>icons/checkerboard.png</file>
     </qresource>
 </RCC>
