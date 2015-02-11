@@ -8,4 +8,4 @@ An Open Source IDE for Game Maker with many workflow improvements over the offic
 
 Recent Screenshot:
 
-[!Recent Screenshot](http://i.imgur.com/K3wpYET.png)
+![Recent Screenshot](http://i.imgur.com/K3wpYET.png)
