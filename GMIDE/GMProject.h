@@ -59,8 +59,13 @@ private:
                 }else{
                     GMAssetNode<T>* child = group->CreateChild("Undefined_Item"); //Create new GMAssetNode
                     QSharedPointer<T> newAsset = QSharedPointer<T>(new T()); //Create the new asset
+                    //Get the path for the specified asset
+                    QString assetName = QFileInfo(projectFile).absolutePath().append("/").append(e.text());
+                    if (newAsset->GetAssetType()!=SCRIPT) { //If it is not a script, we need to append the appropriate extension (.sprite.gmx for example)
+                        assetName.append(".").append(GMAsset::GetAssetTypeString(newAsset->GetAssetType())).append(".").append(GMAsset::GetAssetTypeExtension(newAsset->GetAssetType()));
+                    }
                     //Generate the full asset filepath and store as QFileInfo
-                    QFileInfo assetPath = QFileInfo(QFileInfo(projectFile).absolutePath().append("/").append(e.text()).append(".").append(GMAsset::GetAssetTypeString(newAsset->GetAssetType())).append(".gmx"));
+                    QFileInfo assetPath = QFileInfo(assetName);
                     newAsset->Load(assetPath); //Load the asset
                     child->SetAsset(newAsset); //Set the GMAssetNode to point to the loaded asset
                     std::cout << "Loaded Asset: " << qPrintable(assetPath.canonicalFilePath()) << std::endl;

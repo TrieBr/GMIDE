@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui xml xmlpatterns
+QT       += core gui xml xmlpatterns webkitwidgets
 
 CONFIG += c++11
 
@@ -37,7 +37,8 @@ SOURCES += main.cpp\
     QComboBox_NoScroll.cpp \
     WidgetSpriteFrameView.cpp \
     WidgetSpriteFrameView_Frame.cpp \
-    AssetEditor_Sound.cpp
+    AssetEditor_Sound.cpp \
+    AssetEditor_Script.cpp
 
 HEADERS  += MainWindow.h \
     GMAsset.h \
@@ -62,12 +63,14 @@ HEADERS  += MainWindow.h \
     QComboBox_NoScroll.h \
     WidgetSpriteFrameView.h \
     WidgetSpriteFrameView_Frame.h \
-    AssetEditor_Sound.h
+    AssetEditor_Sound.h \
+    AssetEditor_Script.h
 
 FORMS    += mainwindow.ui \
     asseteditor_room.ui \
     workspaceeditortabcluster.ui \
     asseteditor_sprite.ui \
-    AssetEditor_Sound.ui
+    AssetEditor_Sound.ui \
+    AssetEditor_Script.ui
 
 RESOURCES = skin.qrc

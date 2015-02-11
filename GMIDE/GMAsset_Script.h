@@ -11,6 +11,13 @@ public:
     virtual bool Load(const QFileInfo &file);
     //Get the pixmap icon fir this asset
     virtual QPixmap GetPixmap();
+    //Create script editor
+    virtual QSharedPointer<AssetEditor> CreateEditor();
+    //Get the script Text for this script
+    QString GetScript();
+
+private:
+    QString script;         //The string (text) for the script
 };
 
 

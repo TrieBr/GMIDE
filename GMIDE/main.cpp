@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 
 
     QSharedPointer<GMProject> project (new GMProject());
-    project->Load("F:\\Dropbox\\nGod\\Game with Sounds\\nGod.gmx/nGod.project.gmx");
+    project->Load("D:\\Dropbox\\nGod\\Game with Sounds\\nGod.gmx/nGod.project.gmx");
     Workspace::SetSingleton(new Workspace());
     Workspace::GetSingleton()->SetCurrentProject(project);
 

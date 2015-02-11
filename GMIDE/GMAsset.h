@@ -27,6 +27,7 @@ enum GMAssetType {
 };
 //String names of asset types
 static const char * assetTypeStrings[] = { "unknown", "sprite", "sound", "background", "path", "script", "shader", "font", "timeline", "object", "room", "datafile" };
+static const char * assetTypeExt[] = { "gmx", "gmx", "gmx", "gmx", "gmx", "gml", "gmx", "gmx", "gmx", "gmx", "gmx", "gmx" };
 
 /*
  *  Base class for GameMaker assets.
@@ -61,6 +62,8 @@ public:
     GMAssetType GetAssetType() { return assetType; }
     //Get the asset type as a string
     static QString GetAssetTypeString(GMAssetType type) { return assetTypeStrings[(int)type]; }
+    //Get the asset type extension
+    static QString GetAssetTypeExtension(GMAssetType type) { return assetTypeExt[(int)type]; }
 
     //Create an editor for this asset
     virtual QSharedPointer<AssetEditor> CreateEditor() { return QSharedPointer<AssetEditor>(); }
