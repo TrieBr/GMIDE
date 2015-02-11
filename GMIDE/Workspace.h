@@ -5,6 +5,7 @@
 #include <QSharedPointer>
 #include "WorkspaceEditorTabCluster.h"
 #include "AssetEditor.h"
+#include "Logger.h"
 
 /*
  * Represents a "session" in the IDE with an active project, and manages other properties like tab clusters
@@ -26,14 +27,18 @@ public:
     void OpenAssetEditor(QSharedPointer<GMAsset> resource);
     //Find an open asset editor in any of the editor tab clusters.
     QSharedPointer<AssetEditor> FindOpenAssetEditor(QSharedPointer<GMAsset> asset);
+    //Get the logger for the workspace
+    Logger& GetLogger() { return logger; }
+
 
     //Get workspace singleton
     static Workspace* GetSingleton() { return singleton; }
-
+    //Set the singleton
     static void SetSingleton(Workspace* ptr) { singleton = ptr; }
 private:
     QSharedPointer<GMProject> currentProject;           //Current project for this workspace
     WorkspaceEditorTabCluster* defaultEditorTabCluster; //Default tab cluster
+    Logger  logger;                                     //Logger for the workspace
 
     static Workspace* singleton;
 };

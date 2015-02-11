@@ -21,6 +21,7 @@ GMProject::GMProject()
 //Load specified project (.project.gmx) file
 bool GMProject::Load(const QString &fileName)
 {
+    Logger::Trace(LogIDE) << "Loading project file: " << fileName << endl;
     projectFile.setFileName(fileName);
     QDomDocument xmlDoc;
     if (!projectFile.exists())
@@ -83,15 +84,15 @@ QStandardItemModel* GMProject::ItemModel()
 {
     QStandardItemModel* model = new QStandardItemModel;
     QStandardItem *rootNode = model->invisibleRootItem();
-     rootNode->appendRow((QStandardItem*)&assetSprites);
-     rootNode->appendRow((QStandardItem*)&assetSounds);
-     rootNode->appendRow((QStandardItem*)&assetBackgrounds);
-     rootNode->appendRow((QStandardItem*)&assetPaths);
-     rootNode->appendRow((QStandardItem*)&assetScripts);
-     rootNode->appendRow((QStandardItem*)&assetShaders);
-     rootNode->appendRow((QStandardItem*)&assetFonts);
-     rootNode->appendRow((QStandardItem*)&assetTimeLines);
-     rootNode->appendRow((QStandardItem*)&assetObjects);
+    rootNode->appendRow((QStandardItem*)&assetSprites);
+    rootNode->appendRow((QStandardItem*)&assetSounds);
+    rootNode->appendRow((QStandardItem*)&assetBackgrounds);
+    rootNode->appendRow((QStandardItem*)&assetPaths);
+    rootNode->appendRow((QStandardItem*)&assetScripts);
+    rootNode->appendRow((QStandardItem*)&assetShaders);
+    rootNode->appendRow((QStandardItem*)&assetFonts);
+    rootNode->appendRow((QStandardItem*)&assetTimeLines);
+    rootNode->appendRow((QStandardItem*)&assetObjects);
     rootNode->appendRow((QStandardItem*)&assetRooms);
     rootNode->appendRow((QStandardItem*)&assetIncludedFiles);
     return model;

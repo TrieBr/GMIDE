@@ -15,6 +15,8 @@
 #include "GMAsset_Room.h"
 #include "GMAsset_IncludedFile.h"
 #include "GMAssetNode.h"
+#include "Logger.h"
+
 
 /*
  * Represents a single GameMaker project along with the assets
@@ -68,7 +70,7 @@ private:
                     QFileInfo assetPath = QFileInfo(assetName);
                     newAsset->Load(assetPath); //Load the asset
                     child->SetAsset(newAsset); //Set the GMAssetNode to point to the loaded asset
-                    std::cout << "Loaded Asset: " << qPrintable(assetPath.canonicalFilePath()) << std::endl;
+                    Logger::Trace() << "Loaded Asset: " << qPrintable(assetPath.canonicalFilePath()) << "\n";
                 }
             }
             n = n.nextSibling();

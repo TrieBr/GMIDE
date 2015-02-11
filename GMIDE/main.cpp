@@ -2,9 +2,11 @@
 #include <QApplication>
 #include <QStyleFactory>
 #include "Workspace.h"
+#include <Logger.h>
 
 int main(int argc, char *argv[])
 {
+
     QApplication a(argc, argv);
     a.setStyle(QStyleFactory::create("Fusion"));
 
@@ -25,10 +27,9 @@ int main(int argc, char *argv[])
     qApp->setPalette(palette);
 
 
-    QSharedPointer<GMProject> project (new GMProject());
-    project->Load("D:\\Dropbox\\nGod\\Game with Sounds\\nGod.gmx/nGod.project.gmx");
+
     Workspace::SetSingleton(new Workspace());
-    Workspace::GetSingleton()->SetCurrentProject(project);
+
 
     MainWindow w;
     w.show();

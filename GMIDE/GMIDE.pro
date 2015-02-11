@@ -38,7 +38,9 @@ SOURCES += main.cpp\
     WidgetSpriteFrameView.cpp \
     WidgetSpriteFrameView_Frame.cpp \
     AssetEditor_Sound.cpp \
-    AssetEditor_Script.cpp
+    AssetEditor_Script.cpp \
+    Logger.cpp \
+    TextEditIODevice.cpp
 
 HEADERS  += MainWindow.h \
     GMAsset.h \
@@ -64,7 +66,9 @@ HEADERS  += MainWindow.h \
     WidgetSpriteFrameView.h \
     WidgetSpriteFrameView_Frame.h \
     AssetEditor_Sound.h \
-    AssetEditor_Script.h
+    AssetEditor_Script.h \
+    Logger.h \
+    TextEditIODevice.h
 
 FORMS    += mainwindow.ui \
     asseteditor_room.ui \

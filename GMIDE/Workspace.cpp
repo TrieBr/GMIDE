@@ -4,15 +4,15 @@ Workspace* Workspace::singleton = NULL;
 
 Workspace::Workspace()
 {
-    defaultEditorTabCluster = new WorkspaceEditorTabCluster(0); //Create a defailt tab cluster
+    defaultEditorTabCluster = new WorkspaceEditorTabCluster(0); //Create a default tab cluster
 
 }
 //Set currentproject for this workspace
 void Workspace::SetCurrentProject(QSharedPointer<GMProject> &project)
 {
-
     currentProject = project;
 }
+
 //Get the current project for this workspace
 QSharedPointer<GMProject> Workspace::GetCurrentProject()
 {
